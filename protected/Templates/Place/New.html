@@ -1,0 +1,26 @@
+{% extends 'Layout.html' %}
+
+{% block content %}
+    <h1>Добавление нового места хранения</h1>
+    <br>
+    {% if error %}
+        <p class="text-danger"><small>{{ error }}</small></p>
+        <br>
+    {% endif %}
+    <form action="#" method="post">
+        <div class="form-group row">
+            <label for="id-name" class="col-xs-2">Наименование</label>
+            <input type="text" name="name" id="id-name" required class="col-xs-2">
+        </div>
+        <div class="form-group row">
+            <label for="id-stock" class="col-xs-2">Склад</label>
+            <select name="__stock_id" id="id-stock" required class="col-xs-2">
+                <option></option>
+                {% for stock in stocks %}
+                    <option value="{{ stock.__id }}">{{ stock.name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Добавить</button>
+    </form>
+{% endblock %}

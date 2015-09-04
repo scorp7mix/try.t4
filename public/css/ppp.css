@@ -1,0 +1,22 @@
+table a {
+    text-decoration: none !important;
+}
+
+table tr td:nth-last-child(1),
+table tr td:nth-last-child(2) {
+    width: 2em;
+    font-size: 1.5em;
+}
+
+table th,
+table td {
+    text-align: center;
+}
+
+table tr td:nth-last-child(1) a {
+    color: red;
+}
+
+table tr td:nth-last-child(2) a {
+    color: green;
+}

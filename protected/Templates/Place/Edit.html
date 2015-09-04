@@ -1,0 +1,26 @@
+{% extends 'Layout.html' %}
+
+{% block content %}
+    <h1>Редактирование места хранения #{{ place.__id }}:</h1>
+    <br>
+    {% if error %}
+        <p class="text-danger"><small>{{ error }}</small></p>
+        <br>
+    {% endif %}
+    <form action="#" method="post">
+        <div class="form-group row">
+            <label for="id-name" class="col-xs-2">Наименование</label>
+            <input type="text" name="name" id="id-name" value="{{ place.name }}" class="col-xs-2" required>
+        </div>
+        <div class="form-group row">
+            <label for="id-stock" class="col-xs-2">Склад</label>
+            <select name="__stock_id" id="id-stock" required class="col-xs-2">
+                <option></option>
+                {% for stock in stocks %}
+                    <option value="{{ stock.__id }}" {% if stock.__id == place.stock.__id %}selected{% endif %}>{{ stock.name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Сохранить изменения</button>
+    </form>
+{% endblock %}

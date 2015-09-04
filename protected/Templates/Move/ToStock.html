@@ -1,0 +1,31 @@
+{% extends 'Layout.html' %}
+
+{% block content %}
+    <h1>Прием на склад</h1>
+    <br>
+    <form action="#" method="post">
+        <div class="row form-group">
+            <label for="id-id_consignment" class="col-xs-2">Партия</label>
+            <select name="__consignment_id" id="id-id_consignment" class="col-xs-2">
+                <option></option>
+                {% for c in consignments %}
+                    <option value={{ c.__id }}>{{ c.name }} [{{ c.paint.name }}]</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="row form-group">
+            <label for="id-id_to" class="col-xs-2">Место на складе</label>
+            <select name="__place_to_id" id="id-id_to" class="col-xs-2">
+                <option></option>
+                {% for ps in places %}
+                    <option value={{ ps.__id }}>{{ ps.name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="row form-group">
+            <label for="id-qty" class="col-xs-2">Количество</label>
+            <input type="number" name="qty" id="id-qty" class="col-xs-1">
+        </div>
+        <button type="submit" class="btn btn-primary">Добавить</button>
+    </form>
+{% endblock %}

@@ -5,7 +5,7 @@ return [
         'default' => [
             'driver' => 'mysql',
             'host' => 'localhost',
-            'dbname' => 'standard',
+            'dbname' => 'try.t4',
             'user' => 'root',
             'password' => '',
         ]
@@ -29,7 +29,7 @@ return [
         ],
         'bootstrap' => [
             'location' => 'local',
-            'theme' => 'cerulean',
+            'theme' => 'lumen',
         ],
         'ckeditor' => [
             'location' => 'local',

@@ -1,0 +1,39 @@
+{% extends 'Layout.html' %}
+
+{% block content %}
+    <h1>Перечень мест хранения:</h1>
+    <br>
+    {% if error %}
+        <p class="text-danger"><small>{{ error }}</small></p>
+        <br>
+    {% endif %}
+    {% if success %}
+        <p class="text-success"><small>{{ success }}</small></p>
+        <br>
+    {% endif %}
+    <a href="/place/new">Добавить новое место хранения</a>
+    <br>
+    <br>
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>Наименование</th>
+            <th>Склад</th>
+            <th></th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for place in places %}
+            <tr>
+                <td>{{ place.__id }}</td>
+                <td>{{ place.name }}</td>
+                <td>{{ place.stock.name }}</td>
+                <td><a href="/place/edit/{{ place.__id }}">&#10033</a></td>
+                <td><a href="/place/delete/{{ place.__id }}">&#8855</a></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

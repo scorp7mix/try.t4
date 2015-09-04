@@ -1,0 +1,30 @@
+{% extends 'Layout.html' %}
+
+{% block content %}
+    <h1>Добавление новой партии</h1>
+    <br>
+    {% if error %}
+        <p class="text-danger"><small>{{ error }}</small></p>
+        <br>
+    {% endif %}
+    <form action="#" method="post">
+        <div class="form-group row">
+            <label for="id-name" class="col-xs-2">Наименование</label>
+            <input type="text" name="name" id="id-name" required class="col-xs-2">
+        </div>
+        <div class="form-group row">
+            <label for="id-paint" class="col-xs-2">Краска</label>
+            <select name="__paint_id" id="id-paint" required class="col-xs-2">
+                <option></option>
+                {% for paint in paints %}
+                    <option value="{{ paint.__id }}">{{ paint.name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="form-group row">
+            <label for="id-date" class="col-xs-2">Срок годности</label>
+            <input type="text" name="date_of_end" id="id-date" required class="col-xs-2">
+        </div>
+        <button type="submit" class="btn btn-primary">Добавить</button>
+    </form>
+{% endblock %}

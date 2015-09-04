@@ -1,0 +1,37 @@
+{% extends 'Layout.html' %}
+
+{% block content %}
+    <h1>Перечень красок:</h1>
+    <br>
+    {% if error %}
+        <p class="text-danger"><small>{{ error }}</small></p>
+        <br>
+    {% endif %}
+    {% if success %}
+        <p class="text-success"><small>{{ success }}</small></p>
+        <br>
+    {% endif %}
+    <a href="/paint/new">Добавить новую краску</a>
+    <br>
+    <br>
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>Наименование</th>
+            <th></th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for paint in paints %}
+            <tr>
+                <td>{{ paint.__id }}</td>
+                <td>{{ paint.name }}</td>
+                <td><a href="/paint/edit/{{ paint.__id }}">&#10033</a></td>
+                <td><a href="/paint/delete/{{ paint.__id }}">&#8855</a></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

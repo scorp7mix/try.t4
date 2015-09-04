@@ -1,0 +1,17 @@
+{% extends 'Layout.html' %}
+
+{% block content %}
+    <h1>Добавление новой краски</h1>
+    <br>
+    {% if error %}
+        <p class="text-danger"><small>{{ error }}</small></p>
+        <br>
+    {% endif %}
+    <form action="#" method="post">
+        <div class="form-group row">
+            <label for="id-name" class="col-xs-2">Наименование</label>
+            <input type="text" name="name" id="id-name" required class="col-xs-2">
+        </div>
+        <button type="submit" class="btn btn-primary">Добавить</button>
+    </form>
+{% endblock %}

@@ -13,4 +13,8 @@ return [
     '/index' => '///',
     '/pages/<1>/<2>'    => '/Pages/Index/PageByUrl(url=<2>)',
     '/pages/<1>'        => '/Pages/Index/PageByUrl(url=<1>)',
+
+    '/paint/<1>/<2>'       => '//Paint/<1>(id=<2>)',
+    '/place/<1>/<2>'       => '//Place/<1>(id=<2>)',
+    '/consignment/<1>/<2>'       => '//Consignment/<1>(id=<2>)',
 ];
