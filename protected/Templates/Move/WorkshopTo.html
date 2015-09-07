@@ -1,0 +1,43 @@
+{% extends 'Layout.html' %}
+
+{% block content %}
+    <h1>Расход в цеху</h1>
+    <br>
+    <form action="#" method="post">
+        <div class="row form-group">
+            <label for="id-id_consignment" class="col-xs-2">Партия</label>
+            <select name="__consignment_id" id="id-id_consignment" class="col-xs-2" required>
+                <option></option>
+                {% for c in consignments %}
+                    <option value={{ c.__id }}>{{ c.name }} [{{ c.paint.name }}]</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="row form-group">
+            <label for="id-id_from" class="col-xs-2">Место в цеху</label>
+            <select name="__place_from_id" id="id-id_from" class="col-xs-2" required>
+                <option></option>
+                {% for pf in places %}
+                    <option value={{ pf.__id }}>{{ pf.name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="row form-group">
+            <label for="id-qty" class="col-xs-2">Количество</label>
+            <input type="number" name="qty_from" id="id-qty" class="col-xs-1" required>
+        </div>
+        <div class="row form-group">
+            <label for="id-qty-plan" class="col-xs-2">Количество по плану</label>
+            <input type="number" name="qty_plan" id="id-qty-plan" class="col-xs-1" required>
+        </div>
+        <div class="row form-group">
+            <label for="id-kr" class="col-xs-2">КР</label>
+            <input type="text" name="kr" id="id-kr" class="col-xs-2" required>
+        </div>
+        <div class="row form-group">
+            <label for="id-parts" class="col-xs-2">Количество изделий</label>
+            <input type="number" name="parts" id="id-parts" class="col-xs-1" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Добавить</button>
+    </form>
+{% endblock %}

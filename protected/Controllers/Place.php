@@ -16,7 +16,8 @@ class Place
     public function actionIndex()
     {
         $this->data->places = Model::findAll();
-        $this->data->success = $this->app->flash->message;
+        $this->data->success = $this->app->flash->success;
+        $this->data->error = $this->app->flash->error;
     }
 
     public function actionNew()
@@ -28,7 +29,7 @@ class Place
                 $place = new Model();
                 $place->fill($post);
                 $place->save();
-                $this->app->flash->message = 'Запись #' . $place->__id . ' успешно добавлена';
+                $this->app->flash->success = 'Запись #' . $place->__id . ' успешно добавлена';
                 $this->redirect('/place/index');
             } catch (\Exception $e) {
                 $this->data->error = $e->getMessage();
@@ -47,7 +48,7 @@ class Place
             try {
                 $place->fill($post);
                 $place->save();
-                $this->app->flash->message = 'Запись #' . $id . ' успешно изменена';
+                $this->app->flash->success = 'Запись #' . $id . ' успешно изменена';
                 $this->redirect('/place/index');
             } catch (\Exception $e) {
                 $this->data->error = $e->getMessage();
@@ -64,10 +65,10 @@ class Place
 
         try {
             $place->delete();
-            $this->app->flash->message = 'Запись #' . $id . ' успешно удалена';
+            $this->app->flash->success = 'Запись #' . $id . ' успешно удалена';
             $this->redirect('/place/index');
         } catch (\Exception $e) {
-            $this->data->error = $e->getMessage();
+            $this->app->flash->error = $e->getMessage();
         }
     }
 }

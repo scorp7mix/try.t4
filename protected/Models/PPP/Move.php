@@ -33,8 +33,8 @@ class Move
         'relations' => [
             'type' => ['type' => self::BELONGS_TO, 'model' => Type::class],
             'consignment' => ['type' => self::BELONGS_TO, 'model' => Consignment::class],
-            'place_from' => ['type' => self::BELONGS_TO, 'model' => Place::class],
-            'place_to' => ['type' => self::BELONGS_TO, 'model' => Place::class],
+            'place_from' => ['type' => self::BELONGS_TO, 'model' => Place::class, 'by' => '__place_from_id'],
+            'place_to' => ['type' => self::BELONGS_TO, 'model' => Place::class, 'by' => '__place_to_id'],
         ]
     ];
 

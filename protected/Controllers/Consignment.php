@@ -16,7 +16,8 @@ class Consignment
     public function actionIndex()
     {
         $this->data->consignments = Model::findAll();
-        $this->data->success = $this->app->flash->message;
+        $this->data->success = $this->app->flash->success;
+        $this->data->error = $this->app->flash->error;
     }
 
     public function actionNew()
@@ -28,7 +29,7 @@ class Consignment
                 $consignment = new Model();
                 $consignment->fill($post);
                 $consignment->save();
-                $this->app->flash->message = 'Запись #' . $consignment->__id . ' успешно добавлена';
+                $this->app->flash->success = 'Запись #' . $consignment->__id . ' успешно добавлена';
                 $this->redirect('/consignment/index');
             } catch (\Exception $e) {
                 $this->data->error = $e->getMessage();
@@ -47,7 +48,7 @@ class Consignment
             try {
                 $consignment->fill($post);
                 $consignment->save();
-                $this->app->flash->message = 'Запись #' . $id . ' успешно изменена';
+                $this->app->flash->success = 'Запись #' . $id . ' успешно изменена';
                 $this->redirect('/consignment/index');
             } catch (\Exception $e) {
                 $this->data->error = $e->getMessage();
@@ -64,10 +65,10 @@ class Consignment
 
         try {
             $consignment->delete();
-            $this->app->flash->message = 'Запись #' . $id . ' успешно удалена';
+            $this->app->flash->success = 'Запись #' . $id . ' успешно удалена';
             $this->redirect('/consignment/index');
         } catch (\Exception $e) {
-            $this->data->error = $e->getMessage();
+            $this->app->flash->error = $e->getMessage();
         }
     }
 }

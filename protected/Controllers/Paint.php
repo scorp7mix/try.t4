@@ -15,7 +15,8 @@ class Paint
     public function actionIndex()
     {
         $this->data->paints = Model::findAll();
-        $this->data->success = $this->app->flash->message;
+        $this->data->success = $this->app->flash->success;
+        $this->data->error = $this->app->flash->error;
     }
 
     public function actionNew()
@@ -27,7 +28,7 @@ class Paint
                 $paint = new Model();
                 $paint->fill($post);
                 $paint->save();
-                $this->app->flash->message = 'Запись #' . $paint->__id . ' успешно добавлена';
+                $this->app->flash->success = 'Запись #' . $paint->__id . ' успешно добавлена';
                 $this->redirect('/paint/index');
             } catch (\Exception $e) {
                 $this->data->error = $e->getMessage();
@@ -44,7 +45,7 @@ class Paint
             try {
                 $paint->fill($post);
                 $paint->save();
-                $this->app->flash->message = 'Запись #' . $id . ' успешно изменена';
+                $this->app->flash->success = 'Запись #' . $id . ' успешно изменена';
                 $this->redirect('/paint/index');
             } catch (\Exception $e) {
                 $this->data->error = $e->getMessage();
@@ -60,10 +61,10 @@ class Paint
 
         try {
             $paint->delete();
-            $this->app->flash->message = 'Запись #' . $id . ' успешно удалена';
+            $this->app->flash->success = 'Запись #' . $id . ' успешно удалена';
             $this->redirect('/paint/index');
         } catch (\Exception $e) {
-            $this->data->error = $e->getMessage();
+            $this->app->flash->error = $e->getMessage();
         }
     }
 }

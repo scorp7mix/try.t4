@@ -1,0 +1,44 @@
+{% extends 'Layout.html' %}
+
+{% block content %}
+    <h1>Все движения:</h1>
+    <br>
+    {% if success %}
+        <p class="text-success"><small>{{ success }}</small></p>
+        <br>
+    {% endif %}
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>Дата</th>
+            <th>Тип движения</th>
+            <th>Партия</th>
+            <th>Откуда</th>
+            <th>Куда</th>
+            <th>Расход</th>
+            <th>Приход</th>
+            <th>План</th>
+            <th>КР</th>
+            <th>Изделий</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for move in moves %}
+            <tr>
+                <td>{{ move.__id }}</td>
+                <td>{{ move.date }}</td>
+                <td>{{ move.type.name }}</td>
+                <td>{{ move.consignment.name }} [{{ move.consignment.paint.name }}]</td>
+                <td>{% if move.place_from %}{{ move.place_from.name }} [{{ move.place_from.stock.name }}]{% endif %}</td>
+                <td>{% if move.place_to %}{{ move.place_to.name }} [{{ move.place_to.stock.name }}]{% endif %}</td>
+                <td>{{ move.qty_from }}</td>
+                <td>{{ move.qty_to }}</td>
+                <td>{{ move.qty_plan }}</td>
+                <td>{{ move.kr }}</td>
+                <td>{{ move.parts }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

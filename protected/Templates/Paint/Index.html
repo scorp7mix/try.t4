@@ -28,8 +28,8 @@
             <tr>
                 <td>{{ paint.__id }}</td>
                 <td>{{ paint.name }}</td>
-                <td><a href="/paint/edit/{{ paint.__id }}">&#10033</a></td>
-                <td><a href="/paint/delete/{{ paint.__id }}">&#8855</a></td>
+                <td class="td-before-last"><a href="/paint/edit/{{ paint.__id }}">&#10033</a></td>
+                <td class="td-last"><a href="/paint/delete/{{ paint.__id }}">&#8855</a></td>
             </tr>
         {% endfor %}
         </tbody>

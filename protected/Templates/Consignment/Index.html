@@ -32,8 +32,8 @@
                 <td>{{ consignment.name }}</td>
                 <td>{{ consignment.paint.name }}</td>
                 <td>{{ consignment.date_of_end }}</td>
-                <td><a href="/consignment/edit/{{ consignment.__id }}">&#10033</a></td>
-                <td><a href="/consignment/delete/{{ consignment.__id }}">&#8855</a></td>
+                <td class="td-before-last"><a href="/consignment/edit/{{ consignment.__id }}">&#10033</a></td>
+                <td class="td-last"><a href="/consignment/delete/{{ consignment.__id }}">&#8855</a></td>
             </tr>
         {% endfor %}
         </tbody>
