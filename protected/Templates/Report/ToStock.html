@@ -1,0 +1,28 @@
+{% extends 'Layout.html' %}
+
+{% block content %}
+    <h1>Поставки на склад:</h1>
+    <br>
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>Дата</th>
+            <th>Партия</th>
+            <th>Место на складе</th>
+            <th>Количество</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for move in moves %}
+            <tr>
+                <td>{{ move.__id }}</td>
+                <td>{{ move.date | date('Y-m-d') }}</td>
+                <td>{{ move.consignment.name }} [{{ move.consignment.paint.name }}]</td>
+                <td>{{ move.place_to.name }}</td>
+                <td>{{ move.qty_to }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

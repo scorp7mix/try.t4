@@ -6,10 +6,11 @@
     <form action="#" method="post">
         <div class="row form-group">
             <label for="id-id_consignment" class="col-xs-2">Партия</label>
-            <select name="__consignment_id" id="id-id_consignment" class="col-xs-2" required>
+            <select name="__consignment_id" id="id-id_consignment" class="col-xs-2" required
+                    onchange="window.location.replace('/move/workshop_to?c_id=' + $('#id-id_consignment').val())">
                 <option></option>
-                {% for c in consignments %}
-                    <option value={{ c.__id }}>{{ c.name }} [{{ c.paint.name }}]</option>
+                {% for c_key, c in consignments %}
+                    <option value={{ c_key }} {% if c_key == c_id %}selected{% endif %}>{{ c.name }} [{{ c.paint }}]</option>
                 {% endfor %}
             </select>
         </div>

@@ -37,6 +37,13 @@ class Move
     public function actionStockToWorkshop()
     {
         $post = $this->app->request->post;
+        $c_id = $this->app->request->get->c_id;
+
+        if (isset($c_id)) {
+            $this->data->places_from = Model::getPlaceRemains($c_id, 1);
+            $this->data->c_id = $c_id;
+        }
+
         if ($post->count()) {
             try {
                 $move = new Model();
@@ -60,14 +67,20 @@ class Move
             }
         }
 
-        $this->data->consignments = Consignment::findAll();
-        $this->data->places_from = Place::findAllByColumn('__stock_id', '1');
+        $this->data->consignments = Model::getConsignmentRemains(1);
         $this->data->places_to = Place::findAllByColumn('__stock_id', '2');
     }
 
     public function actionWorkshopToStock()
     {
         $post = $this->app->request->post;
+        $c_id = $this->app->request->get->c_id;
+
+        if (isset($c_id)) {
+            $this->data->places_from = Model::getPlaceRemains($c_id, 2);
+            $this->data->c_id = $c_id;
+        }
+
         if ($post->count()) {
             try {
                 $move = new Model();
@@ -89,14 +102,20 @@ class Move
             }
         }
 
-        $this->data->consignments = Consignment::findAll();
-        $this->data->places_from = Place::findAllByColumn('__stock_id', '2');
+        $this->data->consignments = Model::getConsignmentRemains(2);
         $this->data->places_to = Place::findAllByColumn('__stock_id', '1');
     }
 
     public function actionWorkshopTo()
     {
         $post = $this->app->request->post;
+        $c_id = $this->app->request->get->c_id;
+
+        if (isset($c_id)) {
+            $this->data->places = Model::getPlaceRemains($c_id, 2);
+            $this->data->c_id = $c_id;
+        }
+
         if ($post->count()) {
             try {
                 $move = new Model();
@@ -110,7 +129,6 @@ class Move
             }
         }
 
-        $this->data->consignments = Consignment::findAll();
-        $this->data->places = Place::findAllByColumn('__stock_id', '2');
+        $this->data->consignments = Model::getConsignmentRemains(2);
     }
 }

@@ -1,0 +1,39 @@
+{% extends 'Layout.html' %}
+
+{% block content %}
+    <h1>Остатки по партиям:</h1>
+    <br>
+    <div class="row text-center">
+        <div class="col-xs-2"><b><em>Партия</em></b></div>
+        <div class="col-xs-2"><b><em>Склад</em></b></div>
+        <div class="col-xs-2"><b><em>Место</em></b></div>
+        <div class="col-xs-2"><b><em>Приход</em></b></div>
+        <div class="col-xs-2"><b><em>Расход</em></b></div>
+        <div class="col-xs-2"><b><em>Итог</em></b></div>
+    </div>
+    {% for col1, col1_res in result %}
+        <hr>
+        <div class="row text-center">
+            <div class="col-xs-2 col-level1"><h4>{{ col1 }}</h4></div>
+            <div class="col-xs-offset-4 col-xs-2 col-level1"><h4>{{ col1_res.to }}</h4></div>
+            <div class="col-xs-2 col-level1"><h4>{{ col1_res.from }}</h4></div>
+            <div class="col-xs-2 col-level1"><h4>{{ col1_res.result }}</h4></div>
+        </div>
+        {% for col2, col2_res in col1_res.items %}
+            <div class="row text-center">
+                <div class="col-xs-offset-2 col-xs-2 col-level2"><h5>{{ col2 }}</h5></div>
+                <div class="col-xs-offset-2 col-xs-2 col-level2"><h5>{{ col2_res.to }}</h5></div>
+                <div class="col-xs-2 col-level2"><h5>{{ col2_res.from }}</h5></div>
+                <div class="col-xs-2 col-level2"><h5>{{ col2_res.result }}</h5></div>
+            </div>
+            {% for col3, col3_res in col2_res.items %}
+                <div class="row text-center">
+                    <div class="col-xs-offset-4 col-xs-2 col-level3"><strong>{{ col3 }}</strong></div>
+                    <div class="col-xs-2 col-level3">{{ col3_res.to }}</div>
+                    <div class="col-xs-2 col-level3">{{ col3_res.from }}</div>
+                    <div class="col-xs-2 col-level3">{{ col3_res.result }}</div>
+                </div>
+            {% endfor %}
+        {% endfor %}
+    {% endfor %}
+{% endblock %}

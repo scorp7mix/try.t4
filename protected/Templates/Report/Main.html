@@ -27,11 +27,11 @@
         {% for move in moves %}
             <tr>
                 <td>{{ move.__id }}</td>
-                <td>{{ move.date }}</td>
+                <td>{{ move.date | date('Y-m-d') }}</td>
                 <td>{{ move.type.name }}</td>
-                <td>{{ move.consignment.name }} [{{ move.consignment.paint.name }}]</td>
-                <td>{% if move.place_from %}{{ move.place_from.name }} [{{ move.place_from.stock.name }}]{% endif %}</td>
-                <td>{% if move.place_to %}{{ move.place_to.name }} [{{ move.place_to.stock.name }}]{% endif %}</td>
+                <td>{{ move.consignment.name }} <small>[{{ move.consignment.paint.name }}]</small></td>
+                <td>{% if move.place_from %}{{ move.place_from.name }} <small>[{{ move.place_from.stock.name }}]</small>{% endif %}</td>
+                <td>{% if move.place_to %}{{ move.place_to.name }} <small>[{{ move.place_to.stock.name }}]</small>{% endif %}</td>
                 <td>{{ move.qty_from }}</td>
                 <td>{{ move.qty_to }}</td>
                 <td>{{ move.qty_plan }}</td>

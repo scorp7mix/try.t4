@@ -1,0 +1,34 @@
+{% extends 'Layout.html' %}
+
+{% block content %}
+    <h1>Расход в цеху:</h1>
+    <br>
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>Дата</th>
+            <th>Партия</th>
+            <th>Место в цеху</th>
+            <th>Количество</th>
+            <th>План</th>
+            <th>КР</th>
+            <th>Изделий</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for move in moves %}
+            <tr>
+                <td>{{ move.__id }}</td>
+                <td>{{ move.date | date('Y-m-d') }}</td>
+                <td>{{ move.consignment.name }} [{{ move.consignment.paint.name }}]</td>
+                <td>{{ move.place_from.name }}</td>
+                <td>{{ move.qty_from }}</td>
+                <td>{{ move.qty_plan }}</td>
+                <td>{{ move.kr }}</td>
+                <td>{{ move.parts }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

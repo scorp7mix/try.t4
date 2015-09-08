@@ -20,3 +20,15 @@ table tr td.td-last a {
 table tr td.td-before-last a {
     color: green;
 }
+
+div.col-level1 {
+    border-bottom: 2px solid black;
+}
+
+div.col-level2 {
+    border-bottom: 1px solid black;
+}
+
+div.col-level3 {
+    background-color: #eee;
+}
