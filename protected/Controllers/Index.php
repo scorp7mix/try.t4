@@ -10,6 +10,7 @@ class Index
 
     public function actionDefault()
     {
+        $this->redirect('/report/stocks');
     }
 
     public function action404()
