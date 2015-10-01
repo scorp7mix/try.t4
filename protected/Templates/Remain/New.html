@@ -1,0 +1,35 @@
+{% extends 'Layout.html' %}
+
+{% block content %}
+    <h1>Добавление новой корректировки</h1>
+    <br>
+    {% if error %}
+        <p class="text-danger"><small>{{ error }}</small></p>
+        <br>
+    {% endif %}
+    <form action="#" method="post">
+        <div class="form-group row">
+            <label for="id-consignment" class="col-xs-2">Партия</label>
+            <select name="__consignment_id" id="id-consignment" required class="col-xs-2">
+                <option></option>
+                {% for consignment in consignments %}
+                    <option value="{{ consignment.__id }}">{{ consignment.name }} [{{ consignment.paint.name }}]</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="form-group row">
+            <label for="id-place" class="col-xs-2">Место хранения</label>
+            <select name="__place_id" id="id-place" required class="col-xs-2">
+                <option></option>
+                {% for place in places %}
+                    <option value="{{ place.__id }}">{{ place.name }} [{{ place.stock.name }}]</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="row form-group">
+            <label for="id-qty" class="col-xs-2">Количество</label>
+            <input type="number" name="qty" id="id-qty" class="col-xs-1" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Добавить</button>
+    </form>
+{% endblock %}

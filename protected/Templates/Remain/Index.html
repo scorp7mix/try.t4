@@ -1,0 +1,45 @@
+{% extends 'Layout.html' %}
+
+{% block content %}
+    <h1>Инвентаризация:</h1>
+    <br>
+    {% if error %}
+        <p class="text-danger"><small>{{ error }}</small></p>
+        <br>
+    {% endif %}
+    {% if success %}
+        <p class="text-success"><small>{{ success }}</small></p>
+        <br>
+    {% endif %}
+    <a href="/remain/new">Добавить новую корректировку</a>
+    <br>
+    <br>
+    <form action="#" method="post">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Склад</th>
+                    <th>Место на складе</th>
+                    <th>Краска</th>
+                    <th>Партия</th>
+                    <th>Количество</th>
+                    <th>Коррекция</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for remain in remains %}
+                <tr>
+                    <td>{{ remain.place.stock.name }}</td>
+                    <td>{{ remain.place.name }}</td>
+                    <td>{{ remain.consignment.paint.name }}</td>
+                    <td>{{ remain.consignment.name }}</td>
+                    <td>{{ remain.qty }}</td>
+                    <td><input type="number" name="{{ remain.__id }}" id="id{{ remain.__id }}"
+                               class="col-xs-1" value="{{ remain.qty }}" style="width: 30%; float: none"></td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <button type="submit" class="btn btn-primary">Сохранить</button>
+    </form>
+{% endblock %}

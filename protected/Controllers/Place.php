@@ -15,7 +15,9 @@ class Place
 {
     public function actionIndex()
     {
-        $this->data->places = Model::findAll();
+        $this->data->places = Model::findAll([
+            'order' => 'name'
+        ]);
         $this->data->success = $this->app->flash->success;
         $this->data->error = $this->app->flash->error;
     }

@@ -1,7 +1,7 @@
 {% extends 'Layout.html' %}
 
 {% block content %}
-    <h1>Поставки на склад:</h1>
+    <h1>Корректировки:</h1>
     <br>
     <table class="table table-bordered">
         <thead>
@@ -17,8 +17,20 @@
             <tr>
                 <td>{{ move.date | date('Y-m-d') }}</td>
                 <td>{{ move.consignment.name }} [{{ move.consignment.paint.name }}]</td>
-                <td>{{ move.place_to.name }}</td>
-                <td>{{ move.qty_to }}</td>
+                <td>
+                    {% if move.place_to.name %}
+                        {{ move.place_to.name }}
+                    {% else %}
+                        {{ move.place_from.name }}
+                    {% endif %}
+                </td>
+                <td>
+                    {% if move.qty_to %}
+                        {{ move.qty_to }}
+                    {% else %}
+                        {{ -move.qty_from }}
+                    {% endif %}
+                </td>
             </tr>
         {% endfor %}
         </tbody>

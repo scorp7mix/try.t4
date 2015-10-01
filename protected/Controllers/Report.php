@@ -70,6 +70,13 @@ class Report
         $this->data->result = Model::getResults($data);
     }
 
+    public function actionRemains()
+    {
+        $data = Move::findAllByColumn('__type_id', 5);
+
+        $this->data->moves = $data;
+    }
+
     public function actionToStock()
     {
         $data = Move::findAllByColumn('__type_id', 1);

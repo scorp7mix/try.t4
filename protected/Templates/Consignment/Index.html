@@ -17,7 +17,6 @@
     <table class="table table-bordered">
         <thead>
         <tr>
-            <th>#</th>
             <th>Наименование</th>
             <th>Краска</th>
             <th>Срок годности</th>
@@ -28,7 +27,6 @@
         <tbody>
         {% for consignment in consignments %}
             <tr>
-                <td>{{ consignment.__id }}</td>
                 <td>{{ consignment.name }}</td>
                 <td>{{ consignment.paint.name }}</td>
                 <td>{{ consignment.date_of_end }}</td>

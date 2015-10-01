@@ -14,6 +14,7 @@
     <a href="/paint/new">Добавить новую краску</a>
     <br>
     <br>
+{#
     <table class="table table-bordered">
         <thead>
         <tr>
@@ -34,4 +35,14 @@
         {% endfor %}
         </tbody>
     </table>
+#}
+    <div class="row text-center">
+        {% for paint in paints %}
+            <div class="col-xs-3">
+                {{ paint.name }}
+                <a class="text-success" href="/paint/edit/{{ paint.__id }}">&#10033</a>
+                <a class="text-danger" href="/paint/delete/{{ paint.__id }}">&#8855</a>
+            </div>
+        {% endfor %}
+    </div>
 {% endblock %}

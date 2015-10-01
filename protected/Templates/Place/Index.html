@@ -14,6 +14,7 @@
     <a href="/place/new">Добавить новое место хранения</a>
     <br>
     <br>
+{#
     <table class="table table-bordered">
         <thead>
         <tr>
@@ -36,4 +37,15 @@
         {% endfor %}
         </tbody>
     </table>
+#}
+    <div class="row text-center">
+        {% for place in places %}
+            <div class="col-xs-2">{{ place.name }}</div>
+            <div class="col-xs-2">{{ place.stock.name }}</div>
+            <div class="col-xs-2">
+                <a class="text-success" href="/place/edit/{{ place.__id }}">&#10033</a>
+                <a class="text-danger" href="/place/delete/{{ place.__id }}">&#8855</a>
+            </div>
+        {% endfor %}
+    </div>
 {% endblock %}

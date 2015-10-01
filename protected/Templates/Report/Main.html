@@ -10,7 +10,6 @@
     <table class="table table-bordered">
         <thead>
         <tr>
-            <th>#</th>
             <th>Дата</th>
             <th>Тип движения</th>
             <th>Партия</th>
@@ -26,7 +25,6 @@
         <tbody>
         {% for move in moves %}
             <tr>
-                <td>{{ move.__id }}</td>
                 <td>{{ move.date | date('Y-m-d') }}</td>
                 <td>{{ move.type.name }}</td>
                 <td>{{ move.consignment.name }} <small>[{{ move.consignment.paint.name }}]</small></td>

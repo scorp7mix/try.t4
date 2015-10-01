@@ -9,8 +9,8 @@
             <select name="__consignment_id" id="id-id_consignment" class="col-xs-2" required
                     onchange="window.location.replace('/move/workshop_to?c_id=' + $('#id-id_consignment').val())">
                 <option></option>
-                {% for c_key, c in consignments %}
-                    <option value={{ c_key }} {% if c_key == c_id %}selected{% endif %}>{{ c.name }} [{{ c.paint }}]</option>
+                {% for c in consignments %}
+                    <option value={{ c.id }} {% if c.id == c_id %}selected{% endif %}>{{ c.name }} [{{ c.paint }}]</option>
                 {% endfor %}
             </select>
         </div>
@@ -19,7 +19,7 @@
             <select name="__place_from_id" id="id-id_from" class="col-xs-2" required>
                 <option></option>
                 {% for pf in places %}
-                    <option value={{ pf.__id }}>{{ pf.name }}</option>
+                    <option value={{ pf.id }}>{{ pf.name }}</option>
                 {% endfor %}
             </select>
         </div>
